@@ -1,0 +1,45 @@
+{
+  "name": "rebem-css",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [ "rebem", "bem", "css" ],
+  "homepage": "https://github.com/rebem/css",
+  "repository": "rebem/css",
+  "contributors": [
+    "Kir Belevich <kir@soulshine.in> (https://github.com/deepsweet)",
+    "Denis Koltsov <iam@mistadikay.com> (https://github.com/mistadikay)"
+  ],
+  "main": "lib/index.js",
+  "files": [ "index.js" ],
+  "dependencies": {
+    "postcss": "5.0.x"
+  },
+  "devDependencies": {
+    "husky": "0.10.x",
+    "rimraf": "2.5.x",
+    "eslint": "1.10.x",
+    "eslint-config-rebem": "0.1.x",
+    "mocha": "2.3.x",
+    "istanbul": "0.4.x",
+    "codecov": "1.0.x"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "mocha --recursive",
+    "precoverage": "rimraf coverage/",
+    "coverage": "istanbul cover _mocha -- --recursive",
+
+    "precodecov": "npm run coverage",
+    "codecov": "codecov --file=coverage/lcov.info --disable=search,gcov",
+    "pretravis": "npm run lint",
+    "travis": "npm run codecov",
+
+    "prepush": "npm test"
+  },
+  "engines": {
+    "node": ">=0.12.0",
+    "npm": ">=2.7.0"
+  },
+  "license": "MIT"
+}
