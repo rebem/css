@@ -11,10 +11,21 @@ BEM syntax for CSS.
 
 It just replaces substrings in selectors:
 
+#### `:block()`
+
 ```css
 :block(block) {}
 .block {}
 ```
+
+#### `:elem()`
+
+```css
+:block(block):elem(elem) {}
+.block__elem {}
+```
+
+#### `:mod()`
 
 ```css
 :block(block):mod(mod) {}
@@ -22,11 +33,6 @@ It just replaces substrings in selectors:
 
 :block(block):mod(mod val) {}
 .block_mod_val {}
-```
-
-```css
-:block(block):elem(elem) {}
-.block__elem {}
 ```
 
 ```css
