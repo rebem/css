@@ -3,4 +3,107 @@
 [![coverage](https://img.shields.io/codecov/c/github/rebem/css.svg?style=flat-square)](https://codecov.io/github/rebem/css)
 [![deps](https://img.shields.io/gemnasium/rebem/css.svg?style=flat-square)](https://gemnasium.com/rebem/css)
 
-WIP
+BEM syntax for CSS.
+
+## Overview
+
+### Dead simple
+
+It just replaces substrings in selectors:
+
+```css
+:block(block) {}
+.block {}
+```
+
+```css
+:block(block):mod(mod) {}
+.block_mod {}
+
+:block(block):mod(mod val) {}
+.block_mod_val {}
+```
+
+```css
+:block(block):elem(elem) {}
+.block__elem {}
+```
+
+```css
+:block(block):elem(elem):mod(mod) {}
+.block__elem_mod {}
+
+:block(block):elem(elem):mod(mod val) {}
+.block__elem_mod_val {}
+```
+
+### CSS compatible
+
+It's just a custom pseudo-classes, so you can use it with Less or any other CSS preprocessor:
+
+```less
+:block(block) {
+    &:mod(mod) {
+
+    }
+
+    &:elem(elem) {
+        &:mod(mod val) {
+
+        }
+    }
+}
+```
+
+## Usage
+
+`rebem-css` is a [PostCSS](https://github.com/postcss/postcss) plugin.
+
+### CLI
+
+```sh
+npm i -S postcss postcss-cli rebem-css
+```
+
+```sh
+postcss --use rebem-css test.css -o test.css
+```
+
+### API
+
+```sh
+npm i -S postcss rebem-css
+```
+
+```js
+var postcss = require('postcss');
+var reBEMCSS = require('rebem-css');
+
+console.log(
+    postcss([ reBEMCSS ]).process(':block(block)').css
+);
+```
+
+### webpack
+
+```sh
+npm i -S postcss postcss-loader rebem-css
+```
+
+```js
+var reBEMCSS = require('rebem-css');
+
+module.exports = {
+    module: {
+        loaders: [
+            {
+                test: /\.css$/,
+                loader: 'style!css!postcss'
+            }
+        ]
+    },
+    postcss: function() {
+        return [ reBEMCSS ];
+    }
+}
+```
