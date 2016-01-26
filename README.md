@@ -86,8 +86,9 @@ var postcss = require('postcss');
 var reBEMCSS = require('rebem-css');
 
 console.log(
-    postcss([ reBEMCSS ]).process(':block(block)').css
+    postcss([ reBEMCSS ]).process(':block(block) {}').css
 );
+// .block {}
 ```
 
 ### webpack
