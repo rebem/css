@@ -83,8 +83,8 @@ npm i -S postcss rebem-css
 ```
 
 ```js
-var postcss = require('postcss');
-var reBEMCSS = require('rebem-css');
+import postcss from 'postcss';
+import reBEMCSS from 'rebem-css';
 
 console.log(
     postcss([ reBEMCSS ]).process(':block(block) {}').css
@@ -99,9 +99,9 @@ npm i -S postcss postcss-loader rebem-css
 ```
 
 ```js
-var reBEMCSS = require('rebem-css');
+import reBEMCSS from 'rebem-css';
 
-module.exports = {
+export default {
     module: {
         loaders: [
             {
@@ -110,8 +110,8 @@ module.exports = {
             }
         ]
     },
-    postcss: function() {
+    postcss() {
         return [ reBEMCSS ];
     }
-}
+};
 ```
