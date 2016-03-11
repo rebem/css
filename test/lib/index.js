@@ -1,27 +1,25 @@
-'use strict';
+import postcss from 'postcss';
+import assert from 'assert';
 
-var postcss = require('postcss');
-var assert = require('assert');
+import Plugin from '../../lib/';
 
-var Plugin = require('../../lib/');
-
-function test(selector, result) {
+const test = (selector, result) => {
     assert.strictEqual(
         postcss([ Plugin ]).process(selector + '{}').css,
         result + '{}'
     );
-}
+};
 
-describe('plugin', function() {
-    describe('block', function() {
-        it('simple', function() {
+describe('plugin', () => {
+    describe('block', () => {
+        it('simple', () => {
             test(
                 ':block(block)',
                 '.block'
             );
         });
 
-        it('multiple blocks', function() {
+        it('multiple blocks', () => {
             test(
                 ':block(block1) :block(block2)',
                 '.block1 .block2'
@@ -29,15 +27,15 @@ describe('plugin', function() {
         });
     });
 
-    describe('elem', function() {
-        it('simple', function() {
+    describe('elem', () => {
+        it('simple', () => {
             test(
                 ':block(block):elem(elem)',
                 '.block__elem'
             );
         });
 
-        it('multiple blocks elems', function() {
+        it('multiple blocks elems', () => {
             test(
                 ':block(block1):elem(elem1) :block(block2):elem(elem2)',
                 '.block1__elem1 .block2__elem2'
@@ -45,30 +43,30 @@ describe('plugin', function() {
         });
     });
 
-    describe('mod', function() {
-        describe('block', function() {
-            it('block short mod', function() {
+    describe('mod', () => {
+        describe('block', () => {
+            it('block short mod', () => {
                 test(
                     ':block(block):mod(mod)',
                     '.block_mod'
                 );
             });
 
-            it('multiple blocks shorts mods', function() {
+            it('multiple blocks shorts mods', () => {
                 test(
                     ':block(block1):mod(mod1) :block(block2):mod(mod2)',
                     '.block1_mod1 .block2_mod2'
                 );
             });
 
-            it('block mod', function() {
+            it('block mod', () => {
                 test(
                     ':block(block):mod(mod val)',
                     '.block_mod_val'
                 );
             });
 
-            it('multiple blocks mods', function() {
+            it('multiple blocks mods', () => {
                 test(
                     ':block(block1):mod(mod1 val1) :block(block2):mod(mod2 val2)',
                     '.block1_mod1_val1 .block2_mod2_val2'
@@ -76,29 +74,29 @@ describe('plugin', function() {
             });
         });
 
-        describe('elem', function() {
-            it('elem short mod', function() {
+        describe('elem', () => {
+            it('elem short mod', () => {
                 test(
                     ':block(block):elem(elem):mod(mod)',
                     '.block__elem_mod'
                 );
             });
 
-            it('multiple elems short mods', function() {
+            it('multiple elems short mods', () => {
                 test(
                     ':block(block1):elem(elem1):mod(mod1) :block(block2):elem(elem2):mod(mod2)',
                     '.block1__elem1_mod1 .block2__elem2_mod2'
                 );
             });
 
-            it('elem mod', function() {
+            it('elem mod', () => {
                 test(
                     ':block(block):elem(elem):mod(mod val)',
                     '.block__elem_mod_val'
                 );
             });
 
-            it('multiple elems mods', function() {
+            it('multiple elems mods', () => {
                 test(
                     ':block(block1):elem(elem1):mod(mod1 val1) :block(block2):elem(elem2):mod(mod2 val2)',
                     '.block1__elem1_mod1_val1 .block2__elem2_mod2_val2'

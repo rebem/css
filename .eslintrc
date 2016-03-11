@@ -1,3 +1,6 @@
 {
-  "extends": [ "rebem/configs/common" ]
+  "extends": [
+    "rebem/configs/common",
+    "rebem/configs/babel"
+  ]
 }
