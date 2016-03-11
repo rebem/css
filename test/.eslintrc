@@ -1,9 +1,5 @@
 {
   "extends": [
     "rebem/configs/test"
-  ],
-  "rules": {
-    "max-len": 0,
-    "max-nested-callbacks": 0
-  }
+  ]
 }
