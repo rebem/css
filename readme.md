@@ -2,6 +2,7 @@
 [![travis](http://img.shields.io/travis/rebem/css.svg?style=flat-square)](https://travis-ci.org/rebem/css)
 [![coverage](https://img.shields.io/codecov/c/github/rebem/css.svg?style=flat-square)](https://codecov.io/github/rebem/css)
 [![deps](https://img.shields.io/gemnasium/rebem/css.svg?style=flat-square)](https://gemnasium.com/rebem/css)
+[![gitter](https://img.shields.io/badge/gitter-join_chat_%E2%86%92-46bc99.svg?style=flat-square)](https://gitter.im/rebem/rebem)
 
 BEM syntax for CSS.
 
