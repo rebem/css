@@ -115,3 +115,19 @@ export default {
     }
 };
 ```
+
+### Custom delimeters
+
+Default delimeters are `_` for modifiers and `__` for elements, but you can change it with special environment variables. For example in webpack you can do this with `DefinePlugin`:
+
+
+```js
+plugins: [
+    new webpack.DefinePlugin({
+        'process.env': {
+            REBEM_MOD_DELIM: JSON.stringify('--'),
+            REBEM_ELEM_DELIM: JSON.stringify('~~')
+        }
+    })
+]
+```

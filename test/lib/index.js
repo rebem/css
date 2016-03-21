@@ -1,5 +1,6 @@
 import postcss from 'postcss';
 import assert from 'assert';
+import requireUncached from 'require-uncached';
 
 import Plugin from '../../lib/';
 
@@ -102,6 +103,30 @@ describe('plugin', () => {
                     '.block1__elem1_mod1_val1 .block2__elem2_mod2_val2'
                 );
             });
+        });
+    });
+
+    describe('custom delimeters', function() {
+        it('mods', function() {
+            process.env.REBEM_MOD_DELIM = '~~';
+
+            const CustomPlugin = requireUncached('../../lib/');
+
+            assert.strictEqual(
+                postcss([ CustomPlugin ]).process(':block(block):mod(mod val){}').css,
+                '.block~~mod~~val{}'
+            );
+        });
+
+        it('elem', function() {
+            process.env.REBEM_ELEM_DELIM = '--';
+
+            const CustomPlugin = requireUncached('../../lib/');
+
+            assert.strictEqual(
+                postcss([ CustomPlugin ]).process(':block(block):elem(elem){}').css,
+                '.block--elem{}'
+            );
         });
     });
 });
