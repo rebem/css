@@ -1,6 +1,6 @@
 {
   "name": "rebem-css",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "BEM syntax for CSS",
   "keywords": [ "rebem", "bem", "css" ],
   "homepage": "https://github.com/rebem/css",
